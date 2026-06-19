@@ -1,0 +1,165 @@
+/* =========================================================
+   greemlab logo kit
+   ---------------------------------------------------------
+   Готовые варианты работы с PNG-логотипом (белое на чёрном)
+   через CSS-маску в режиме luminance.
+   Все классы — независимы. Можно копировать поштучно.
+
+   Использование:
+   <div class="logo logo--floating logo--glow"></div>
+
+   Переменные настройки:
+     --logo-url    : путь к PNG (по умолчанию assets/logo.png)
+     --logo-size   : размер контейнера (default 220px)
+     --logo-fill   : градиент/цвет «заливки» лого
+     --logo-glow   : цвет свечения
+   ========================================================= */
+
+.logo {
+  --logo-url: url("assets/logo.png");
+  --logo-size: clamp(160px, 28vw, 220px);
+  --logo-fill: linear-gradient(180deg, #ffffff 0%, #f1f4ff 60%, #d6deff 100%);
+  --logo-glow: rgba(255, 255, 255, 0.55);
+  --logo-glow-2: rgba(180, 200, 255, 0.25);
+
+  position: relative;
+  display: inline-block;
+  width: var(--logo-size);
+  aspect-ratio: 1 / 1;
+
+  background: var(--logo-fill);
+
+  -webkit-mask-image: var(--logo-url);
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  -webkit-mask-size: contain;
+  -webkit-mask-source-type: luminance;
+          mask-image: var(--logo-url);
+          mask-repeat: no-repeat;
+          mask-position: center;
+          mask-size: contain;
+          mask-mode: luminance;
+
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+/* ---------- 1. GLOW (мягкое свечение) ---------- */
+.logo--glow {
+  filter:
+    drop-shadow(0 0 20px var(--logo-glow))
+    drop-shadow(0 0 44px var(--logo-glow-2));
+}
+
+/* ---------- 2. FLOATING (плавание + покачивание + дыхание) ---------- */
+.logo--floating {
+  transform-origin: 50% 50%;
+  animation:
+    logoFloat 7s ease-in-out infinite,
+    logoDrift 11s ease-in-out infinite,
+    logoSway 9s ease-in-out infinite;
+}
+
+@keyframes logoFloat {
+  0%, 100% { translate: 0 0; }
+  50%      { translate: 0 -14px; }
+}
+@keyframes logoDrift {
+  0%, 100% { rotate: -1.5deg; }
+  50%      { rotate:  1.5deg; }
+}
+@keyframes logoSway {
+  0%, 100% { scale: 1; }
+  50%      { scale: 1.04; }
+}
+
+/* ---------- 3. PARALLAX (требует JS, см. logo.js) ---------- */
+.logo--parallax {
+  transform: translate3d(var(--px, 0px), var(--py, 0px), 0);
+  transition: transform 600ms cubic-bezier(0.2, 0.7, 0.2, 1);
+  will-change: transform;
+}
+
+/* ---------- 4. PULSE (только пульсация яркости) ---------- */
+.logo--pulse {
+  animation: logoPulse 3.2s ease-in-out infinite;
+}
+@keyframes logoPulse {
+  0%, 100% { filter: drop-shadow(0 0 10px var(--logo-glow)); }
+  50%      { filter: drop-shadow(0 0 30px var(--logo-glow)) drop-shadow(0 0 60px var(--logo-glow-2)); }
+}
+
+/* ---------- 5. ORBIT HALO (статический ореол вокруг) ---------- */
+.logo-halo {
+  position: relative;
+  display: inline-grid;
+  place-items: center;
+  isolation: isolate;
+}
+.logo-halo::before,
+.logo-halo::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  z-index: -1;
+  pointer-events: none;
+}
+.logo-halo::before {
+  inset: -30%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.32) 0%, rgba(180, 200, 255, 0.12) 35%, transparent 70%);
+  filter: blur(24px);
+  animation: haloPulse 4.5s ease-in-out infinite;
+}
+.logo-halo::after {
+  inset: -10%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.18) 0%, transparent 60%);
+  filter: blur(8px);
+  animation: haloPulse 3s ease-in-out infinite reverse;
+}
+@keyframes haloPulse {
+  0%, 100% { opacity: 0.55; transform: scale(1); }
+  50%      { opacity: 1;    transform: scale(1.08); }
+}
+
+/* ---------- 6. ТЕМАТИЧЕСКИЕ ЗАЛИВКИ ---------- */
+.logo--theme-ice     { --logo-fill: linear-gradient(180deg, #ffffff 0%, #d8eaff 100%);
+                        --logo-glow: rgba(170, 210, 255, 0.6);
+                        --logo-glow-2: rgba(120, 170, 230, 0.3); }
+.logo--theme-fire    { --logo-fill: linear-gradient(180deg, #fff5d0 0%, #ff8a3d 100%);
+                        --logo-glow: rgba(255, 165, 90, 0.7);
+                        --logo-glow-2: rgba(255, 100, 40, 0.35); }
+.logo--theme-mint    { --logo-fill: linear-gradient(180deg, #ffffff 0%, #b6f3d4 100%);
+                        --logo-glow: rgba(130, 240, 190, 0.6);
+                        --logo-glow-2: rgba(80, 200, 150, 0.3); }
+.logo--theme-violet  { --logo-fill: linear-gradient(180deg, #f3e8ff 0%, #a07dff 100%);
+                        --logo-glow: rgba(180, 140, 255, 0.7);
+                        --logo-glow-2: rgba(120, 90, 230, 0.35); }
+.logo--theme-mono    { --logo-fill: #ffffff;
+                        --logo-glow: rgba(255, 255, 255, 0.6);
+                        --logo-glow-2: rgba(255, 255, 255, 0.2); }
+.logo--theme-outline { --logo-fill: transparent;
+                        background-image: linear-gradient(180deg, #fff, #cfd3e6);
+                        -webkit-background-clip: padding-box; }
+
+/* ---------- 7. ИНВЕРСИЯ (чёрное лого на светлом фоне) ---------- */
+.logo--inverse {
+  --logo-fill: linear-gradient(180deg, #1a1d2e 0%, #0a0c18 100%);
+  filter: none;
+}
+
+/* ---------- 8. РАЗМЕРЫ ---------- */
+.logo--xs { --logo-size: 48px; }
+.logo--sm { --logo-size: 96px; }
+.logo--md { --logo-size: 160px; }
+.logo--lg { --logo-size: 240px; }
+.logo--xl { --logo-size: 340px; }
+
+/* ---------- A11y / reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .logo--floating,
+  .logo--pulse,
+  .logo-halo::before,
+  .logo-halo::after {
+    animation: none !important;
+  }
+}

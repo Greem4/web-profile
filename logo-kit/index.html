@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>greemlab — logo kit</title>
+  <link rel="icon" type="image/png" href="assets/logo.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="logo.css" />
+  <link rel="stylesheet" href="showcase.css" />
+</head>
+<body>
+  <header class="hero">
+    <h1>greemlab · logo kit</h1>
+    <p class="lead">
+      Готовые варианты работы с лого: CSS-маска, плавание, параллакс, glow, темы.
+      Просто копируй классы или сниппеты ниже.
+    </p>
+    <p class="meta">
+      <code>logo.css</code> · <code>logo.js</code> · <code>assets/logo.png</code>
+    </p>
+  </header>
+
+  <main class="grid">
+
+    <!-- 1. Базовый -->
+    <section class="tile">
+      <div class="tile__stage">
+        <div class="logo logo--glow"></div>
+      </div>
+      <div class="tile__body">
+        <h2>Базовый</h2>
+        <p>Только маска + лёгкое свечение. Самый простой вариант.</p>
+        <button class="copy" data-target="#snip-basic">Скопировать HTML</button>
+        <pre id="snip-basic"><code>&lt;div class="logo logo--glow"&gt;&lt;/div&gt;</code></pre>
+      </div>
+    </section>
+
+    <!-- 2. Плавающий -->
+    <section class="tile">
+      <div class="tile__stage">
+        <div class="logo logo--glow logo--floating"></div>
+      </div>
+      <div class="tile__body">
+        <h2>Плавающий</h2>
+        <p>Вверх-вниз, лёгкий наклон, дыхание масштабом — лого «живёт».</p>
+        <button class="copy" data-target="#snip-float">Скопировать HTML</button>
+        <pre id="snip-float"><code>&lt;div class="logo logo--glow logo--floating"&gt;&lt;/div&gt;</code></pre>
+      </div>
+    </section>
+
+    <!-- 3. Параллакс -->
+    <section class="tile">
+      <div class="tile__stage">
+        <div class="logo logo--glow logo--parallax"></div>
+      </div>
+      <div class="tile__body">
+        <h2>Параллакс</h2>
+        <p>Следит за курсором. Подключи <code>logo.js</code>. На тачах отключается.</p>
+        <button class="copy" data-target="#snip-parallax">Скопировать HTML</button>
+        <pre id="snip-parallax"><code>&lt;div class="logo logo--glow logo--parallax"&gt;&lt;/div&gt;
+&lt;script src="logo.js" defer&gt;&lt;/script&gt;</code></pre>
+      </div>
+    </section>
+
+    <!-- 4. Пульсация -->
+    <section class="tile">
+      <div class="tile__stage">
+        <div class="logo logo--pulse"></div>
+      </div>
+      <div class="tile__body">
+        <h2>Пульсация</h2>
+        <p>Свечение пульсирует, как маячок. Хорошо для статуса «online».</p>
+        <button class="copy" data-target="#snip-pulse">Скопировать HTML</button>
+        <pre id="snip-pulse"><code>&lt;div class="logo logo--pulse"&gt;&lt;/div&gt;</code></pre>
+      </div>
+    </section>
+
+    <!-- 5. Halo ореол -->
+    <section class="tile">
+      <div class="tile__stage">
+        <div class="logo-halo">
+          <div class="logo logo--floating"></div>
+        </div>
+      </div>
+      <div class="tile__body">
+        <h2>Halo ореол</h2>
+        <p>Два пульсирующих радиальных градиента вокруг лого.</p>
+        <button class="copy" data-target="#snip-halo">Скопировать HTML</button>
+        <pre id="snip-halo"><code>&lt;div class="logo-halo"&gt;
+  &lt;div class="logo logo--floating"&gt;&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+      </div>
+    </section>
+
+    <!-- 6. Полный пресет -->
+    <section class="tile tile--wide">
+      <div class="tile__stage">
+        <div class="logo-halo">
+          <div class="logo logo--glow logo--floating logo--parallax logo--lg"></div>
+        </div>
+      </div>
+      <div class="tile__body">
+        <h2>Полный пресет (как на главной)</h2>
+        <p>Glow + floating + parallax + halo. То, что стоит на greemlab.ru.</p>
+        <button class="copy" data-target="#snip-full">Скопировать HTML</button>
+        <pre id="snip-full"><code>&lt;div class="logo-halo"&gt;
+  &lt;div class="logo logo--glow logo--floating logo--parallax logo--lg"&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;script src="logo.js" defer&gt;&lt;/script&gt;</code></pre>
+      </div>
+    </section>
+
+    <!-- 7. Темы -->
+    <section class="tile tile--wide">
+      <div class="tile__stage tile__stage--row">
+        <div class="logo logo--glow logo--md"></div>
+        <div class="logo logo--glow logo--md logo--theme-ice"></div>
+        <div class="logo logo--glow logo--md logo--theme-fire"></div>
+        <div class="logo logo--glow logo--md logo--theme-mint"></div>
+        <div class="logo logo--glow logo--md logo--theme-violet"></div>
+        <div class="logo logo--md logo--theme-mono"></div>
+      </div>
+      <div class="tile__body">
+        <h2>Цветовые темы</h2>
+        <p>
+          Меняй заливку и glow одной модификатор-классом:
+          <code>--theme-ice</code>, <code>--theme-fire</code>,
+          <code>--theme-mint</code>, <code>--theme-violet</code>, <code>--theme-mono</code>.
+          Или задай свои переменные <code>--logo-fill</code> и <code>--logo-glow</code>.
+        </p>
+        <button class="copy" data-target="#snip-themes">Скопировать HTML</button>
+        <pre id="snip-themes"><code>&lt;div class="logo logo--glow logo--theme-fire"&gt;&lt;/div&gt;
+&lt;div class="logo logo--glow logo--theme-violet"&gt;&lt;/div&gt;
+
+&lt;!-- свой цвет --&gt;
+&lt;div class="logo logo--glow" style="
+  --logo-fill: linear-gradient(180deg, #fff, #ff5b9e);
+  --logo-glow: rgba(255, 90, 160, .7);
+"&gt;&lt;/div&gt;</code></pre>
+      </div>
+    </section>
+
+    <!-- 8. Размеры -->
+    <section class="tile tile--wide">
+      <div class="tile__stage tile__stage--row tile__stage--baseline">
+        <div class="logo logo--glow logo--xs"></div>
+        <div class="logo logo--glow logo--sm"></div>
+        <div class="logo logo--glow logo--md"></div>
+        <div class="logo logo--glow logo--lg"></div>
+      </div>
+      <div class="tile__body">
+        <h2>Размеры</h2>
+        <p>
+          <code>--xs</code> 48 · <code>--sm</code> 96 · <code>--md</code> 160 ·
+          <code>--lg</code> 240 · <code>--xl</code> 340. Или свой:
+          <code>style="--logo-size: 180px"</code>.
+        </p>
+      </div>
+    </section>
+
+    <!-- 9. Светлая тема (инверсия) -->
+    <section class="tile">
+      <div class="tile__stage tile__stage--light">
+        <div class="logo logo--inverse"></div>
+      </div>
+      <div class="tile__body">
+        <h2>Инверсия (тёмное лого на светлом)</h2>
+        <p>Для светлых фонов — тёмный градиент вместо белого.</p>
+        <button class="copy" data-target="#snip-inv">Скопировать HTML</button>
+        <pre id="snip-inv"><code>&lt;div class="logo logo--inverse"&gt;&lt;/div&gt;</code></pre>
+      </div>
+    </section>
+
+    <!-- 10. Чисто SVG-маска (без PNG) -->
+    <section class="tile">
+      <div class="tile__stage">
+        <div
+          class="logo logo--glow"
+          style="-webkit-mask-image:none;mask-image:none;background:transparent;display:grid;place-items:center"
+        >
+          <svg viewBox="0 0 100 100" width="80%" height="80%" aria-hidden="true">
+            <defs>
+              <linearGradient id="g" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#ffffff" />
+                <stop offset="1" stop-color="#d6deff" />
+              </linearGradient>
+            </defs>
+            <circle cx="50" cy="50" r="34" fill="none" stroke="url(#g)" stroke-width="7" />
+            <path d="M50 33 v34 h12" fill="none" stroke="url(#g)" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </div>
+      </div>
+      <div class="tile__body">
+        <h2>Альтернатива: SVG-версия</h2>
+        <p>
+          Если захочешь идеально векторно — перерисовать G+L силуэтом в SVG.
+          Здесь упрощённый пример; настоящую форму можно векторизовать в Figma/Illustrator.
+        </p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <p>
+      Подробности и сниппеты для копипасты — в
+      <a href="README.md">README.md</a>.
+    </p>
+  </footer>
+
+  <div class="toast" id="toast" role="status" aria-live="polite">Скопировано</div>
+
+  <script src="logo.js" defer></script>
+  <script src="showcase.js" defer></script>
+</body>
+</html>
