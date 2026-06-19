@@ -139,16 +139,14 @@ body {
   width: 100%;
   height: 100%;
   background: linear-gradient(180deg, #ffffff 0%, #f1f4ff 60%, #d6deff 100%);
-  -webkit-mask-image: url("assets/logo.png");
+  -webkit-mask-image: url("assets/logo-mask.png");
   -webkit-mask-repeat: no-repeat;
   -webkit-mask-position: center;
   -webkit-mask-size: contain;
-  -webkit-mask-source-type: luminance;
-          mask-image: url("assets/logo.png");
+          mask-image: url("assets/logo-mask.png");
           mask-repeat: no-repeat;
           mask-position: center;
           mask-size: contain;
-          mask-mode: luminance;
   filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.55)) drop-shadow(0 0 44px rgba(180, 200, 255, 0.25));
   animation: float 7s ease-in-out infinite, drift 11s ease-in-out infinite, sway 9s ease-in-out infinite;
   transform-origin: 50% 50%;

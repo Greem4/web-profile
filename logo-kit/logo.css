@@ -1,22 +1,24 @@
 /* =========================================================
    greemlab logo kit
    ---------------------------------------------------------
-   Готовые варианты работы с PNG-логотипом (белое на чёрном)
-   через CSS-маску в режиме luminance.
-   Все классы — независимы. Можно копировать поштучно.
+   Готовые варианты работы с PNG-логотипом через CSS-маску.
+   Источник: assets/logo-mask.png — белое лого на ПРОЗРАЧНОМ
+   фоне (alpha-маска). За счёт чистой маски свечение от
+   drop-shadow получается ровно круглым, без квадратного
+   силуэта.
 
    Использование:
    <div class="logo logo--floating logo--glow"></div>
 
    Переменные настройки:
-     --logo-url    : путь к PNG (по умолчанию assets/logo.png)
+     --logo-url    : путь к PNG-маске (по умолчанию assets/logo-mask.png)
      --logo-size   : размер контейнера (default 220px)
      --logo-fill   : градиент/цвет «заливки» лого
      --logo-glow   : цвет свечения
    ========================================================= */
 
 .logo {
-  --logo-url: url("assets/logo.png");
+  --logo-url: url("assets/logo-mask.png");
   --logo-size: clamp(160px, 28vw, 220px);
   --logo-fill: linear-gradient(180deg, #ffffff 0%, #f1f4ff 60%, #d6deff 100%);
   --logo-glow: rgba(255, 255, 255, 0.55);
@@ -33,12 +35,10 @@
   -webkit-mask-repeat: no-repeat;
   -webkit-mask-position: center;
   -webkit-mask-size: contain;
-  -webkit-mask-source-type: luminance;
           mask-image: var(--logo-url);
           mask-repeat: no-repeat;
           mask-position: center;
           mask-size: contain;
-          mask-mode: luminance;
 
   user-select: none;
   -webkit-user-drag: none;
